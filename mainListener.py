@@ -3,6 +3,7 @@ import keyFunctions
 
 keyList = {}
 
+
 with open('keyList.txt','rt') as l:
         keyArray = [line.replace('\n','') for line in l.readlines()]
 
@@ -26,6 +27,7 @@ def on_press(key):
 def on_release(key):
     pass
 
+print(settings)
 
 with keyboard.Listener(on_press=on_press,on_release=on_release) as listener:
     listener.join()

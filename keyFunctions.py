@@ -1,6 +1,13 @@
 import subprocess
-from sys import float_repr_style
 import pyperclip
+from pynput.mouse import Button,Controller
+import json
+
+mouse = Controller() #init mouse object
+
+#load settings from settings.json in the dict: settings
+with open('settings.json') as jsonFile:
+    settings = json.load(jsonFile)
 
 leftPressed = False
 rightPressed = False
@@ -268,18 +275,25 @@ def functionNum3():
     pass
 
 def functionNum4():
-    pass
+    mouse.press(Button.right)
 
 def functionNum5():
-    pass
+    #add autoclick rightclick feature
+    #maybe use multithreading so the autoclicker can be cannceled again?
+    if rightAutoclicker == False:
+        rightAutoclicker = True
+        pass
+    else:
+        pass
 
 def functionNum6():
     pass
 
 def functionNum7():
-    pass
+    mouse.press(Button.left)
 
 def functionNum8():
+    #add autoclick leftclick feature
     pass
 
 def functionNum9():
