@@ -1,3 +1,9 @@
+import subprocess
+import pyperclip
+
+def openExplorerAt(path:str):
+    subprocess.Popen(r'explorer /e, "' + path + '"')
+
 #uüüer row
 def functionEscape():
     pass
@@ -86,16 +92,16 @@ def functionTab():
     pass
 
 def functionQ():
-    pass
+    openExplorerAt(r'C:\Users\Valen\AppData\Roaming\.minecraft')
 
 def functionW():
-    pass
+    openExplorerAt(r'C:\Users\Valen\AppData\Roaming\.minecraft\mods')
 
 def functionE():
-    pass
+    openExplorerAt(r'C:\Users\Valen\OneDrive\Desktop\HotSwap Mods')
 
 def functionR():
-    pass
+    pyperclip.copy('1495774276')
 
 def functionT():
     pass
@@ -129,16 +135,16 @@ def functionCapslock():
     pass
 
 def functionA():
-    print('youpressed A!!!!!!!!!!!!!!')
+    openExplorerAt(r'C:\Users\Valen\Downloads')
 
 def functionS():
-    pass
+    openExplorerAt('C:\\')
 
 def functionD():
-    pass
+    openExplorerAt('D:\\')    
 
 def functionF():
-    pass
+    openExplorerAt(r'C:\Users\Valen\OneDrive')
 
 def functionG():
     pass
@@ -169,16 +175,16 @@ def functionRShift():
     pass
 
 def functionY():
-    pass
+    openExplorerAt(r'C:\Users\Valen\OneDrive\Uni')
 
 def functionX():
-    pass
+    openExplorerAt(r'C:\Users\Valen\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup')
 
 def functionC():
-    pass
+    openExplorerAt(r'C:\2nd-keyboard')
 
 def functionV():
-    pass
+    openExplorerAt(r'C:\Users\Valen\OneDrive\Dokumente')
 
 def functionB():
     pass
