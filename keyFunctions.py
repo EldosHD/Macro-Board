@@ -1,5 +1,13 @@
 import subprocess
+from sys import float_repr_style
 import pyperclip
+
+leftPressed = False
+rightPressed = False
+
+leftAutoClicker = False
+rightAutoclicker = False
+
 
 def openExplorerAt(path:str):
     subprocess.Popen(r'explorer /e, "' + path + '"')
