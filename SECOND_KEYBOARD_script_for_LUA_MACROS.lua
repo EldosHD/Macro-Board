@@ -101,7 +101,7 @@ local config = {
 	[111] = "numDiv",
     [144] = "numLock", --probably it is best to avoid this key. I keep numlock ON, or it has unexpected effects
       
-    [192] = "`",  --this is the tilde key just before the number row
+    [192] = "apo",  --this is the tilde key just before the number row
     [9]   = "tab",
     [20]  = "capslock",
     [18]  = "alt",
