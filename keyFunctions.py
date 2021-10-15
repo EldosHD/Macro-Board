@@ -1,3 +1,4 @@
+from os import set_inheritable
 import subprocess
 import pyperclip
 from pynput.mouse import Button,Controller
@@ -5,9 +6,7 @@ import json
 
 mouse = Controller() #init mouse object
 
-#load settings from settings.json in the dict: settings
-with open('settings.json') as jsonFile:
-    settings = json.load(jsonFile)
+settings = {} #init settings dict
 
 leftPressed = False
 rightPressed = False
@@ -19,7 +18,16 @@ rightAutoclicker = False
 def openExplorerAt(path:str):
     subprocess.Popen(r'explorer /e, "' + path + '"')
 
-#uüüer row
+def loadSettings():
+    #load settings from settings.json in the dict: settings
+    global settings
+    with open('settings.json') as jsonFile:
+        settings = json.load(jsonFile)
+
+
+
+#----------Start of keyfunctions----------
+#upper row
 def functionEscape():
     pass
 
