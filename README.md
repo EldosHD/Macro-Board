@@ -1,7 +1,7 @@
 # Macro-Board
 This is just a placeholder. Actual stuff will follow (hopefully)
 
-### Table of contents
+## Table of contents
 [Quick Introduction](#quick-introduction)\
 [To Do](#to-do)\
 [Installation](#installation)\
@@ -16,6 +16,7 @@ _add stuff_
 my friend is working on [another version](https://github.com/TimeElysium/secondKeybordShortcuts) that is based on my original framwork
 
 ## To Do
+
 - [x] create base framwork
 - [x] add support for opening folders
 - [x] use TheElysiums [better listener](https://github.com/TimeElysium/secondKeybordShortcuts) 
@@ -25,6 +26,7 @@ my friend is working on [another version](https://github.com/TimeElysium/secondK
 
 ## Installation
 I´ll probably write an install for that. But for now, here are the basic instructions:
+
 1. Download the code an extract it to ur fav location.
 2. install luamacros
 3. run the `SECOND_KEYBOARD_script_for_LUA_MACROS.lua` with luamacros

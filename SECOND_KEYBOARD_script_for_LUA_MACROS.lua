@@ -156,7 +156,7 @@ lmc_set_handler('MACROS', function(button, direction)
                 print(' ')
                 print('Your key ID number is:   ' .. button)
 				print('It was assigned string:    ' .. config[button])
-				sendToAHK(config[button])
+				sendToAHK(button)
 	else
                 print(' ')
                 print('Not yet assigned: ' .. button)
