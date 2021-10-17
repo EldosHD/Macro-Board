@@ -3,6 +3,8 @@ import subprocess
 import pyperclip
 from pynput.mouse import Button,Controller
 import json
+import time
+import threading
 
 mouse = Controller() #init mouse object
 
@@ -14,7 +16,6 @@ rightPressed = False
 leftAutoClicker = False
 rightAutoclicker = False
 
-
 def openExplorerAt(path:str):
     subprocess.Popen(r'explorer /e, "' + path + '"')
 
@@ -23,6 +24,39 @@ def loadSettings():
     global settings
     with open('settings.json') as jsonFile:
         settings = json.load(jsonFile)
+
+
+class ClickMouse(threading.Thread):
+    def __init__(self, delay, button):
+        super(ClickMouse, self).__init__()
+        self.delay = delay
+        self.button = button
+        self.running = False
+        self.programRunning = True
+
+    def startClicking(self):
+        self.running = True
+
+    def stopClicking(self):
+        self.running = False
+
+    def exit(self):
+        self.stopClicking()
+        self.programRunning = False
+
+    def run(self):
+        while self.programRunning:
+            while self.running:
+                mouse.click(self.button)
+                time.sleep(self.delay)
+            time.sleep(0.1)
+
+
+def autoclicker(clickThread):
+    if clickThread.running:
+        clickThread.stopClicking()
+    else:
+        clickThread.startClicking()
 
 
 
@@ -287,12 +321,7 @@ def functionNum4():
 
 def functionNum5():
     #add autoclick rightclick feature
-    #maybe use multithreading so the autoclicker can be cannceled again?
-    if rightAutoclicker == False:
-        rightAutoclicker = True
-        pass
-    else:
-        pass
+    pass
 
 def functionNum6():
     pass
@@ -302,7 +331,13 @@ def functionNum7():
 
 def functionNum8():
     #add autoclick leftclick feature
-    pass
+    #use 2 seperate threads for each clicker that get created at the start of the program
+    delay = 0.5
+    button = Button.left
+    clickThread = ClickMouse(delay, button)
+    clickThread.start()
+    autoclicker(clickThread)
+
 
 def functionNum9():
     pass
@@ -321,3 +356,8 @@ def functionNumMult():
 
 def functionNumDiv():
     pass
+
+# input('Turn on')
+# functionNum8()
+# input('turn off')
+# functionNum8()

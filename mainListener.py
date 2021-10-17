@@ -19,7 +19,7 @@ def checkKey(key):
 def on_press(key):
     if key == keyboard.Key.scroll_lock: #checks if the key is the scroll lock
         return False
-    elif key == keyboard.Key.f19:
+    elif key == keyboard.Key.f19: #F19 is pressed by luamacros
         with open('keypressed.txt','rt') as k:
             pressedKey = k.read()
             checkKey(pressedKey)
@@ -27,7 +27,6 @@ def on_press(key):
 def on_release(key):
     pass
 
-print(settings)
 
 with keyboard.Listener(on_press=on_press,on_release=on_release) as listener:
     listener.join()

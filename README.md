@@ -13,9 +13,12 @@ This is just a placeholder. Actual stuff will follow (hopefully)
 ## Quick Introduction
 _add stuff_
 
+my friend is working on [another version](https://github.com/TimeElysium/secondKeybordShortcuts) that is based on my original framwork
+
 ## To Do
 - [x] create base framwork
 - [x] add support for opening folders
+- [x] use TheElysiums [better listener](https://github.com/TimeElysium/secondKeybordShortcuts) 
 - [ ] add an autoclicker
 - [ ] add an easy way to send text (e.g. in a game chat)
 - [ ] create readme
