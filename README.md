@@ -20,12 +20,10 @@ my friend is working on [another version](https://github.com/TimeElysium/secondK
 
 ## To Do
 
-- [x] create base framwork
-- [x] add support for opening folders
-- [x] use TheElysiums [better listener](https://github.com/TimeElysium/secondKeybordShortcuts)
-- [ ] add an autoclicker
-- [ ] add an easy way to send text (e.g. in a game chat)
-- [ ] create readme
+- create an "type" in hotkeys.json for every function in std and stdExtensions
+- port all current hotkeys to the hotkeys.json file
+- add an easy way to send text (e.g. in a game chat)  (with option for multiple games?!)
+- finish readme
 
 ## Installation
 

@@ -12,7 +12,7 @@ def loadSettings():
             global settings
             settings = json.load(jsonFile)
         jsonFile.close()
-        print('Settings loaded successfully')
+        print('finished loading Settings')
     except BaseException as err:
         print('\n\nERROR: Settings failed to load. Check settings.json. The following exception was raised:')
         print(str(err) + '\n')

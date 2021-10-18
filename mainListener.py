@@ -1,6 +1,7 @@
 import std
 import stdExtensions.autoClicker
 
+import json
 from pynput import keyboard
 import keyFunctions
 import subprocess
@@ -10,9 +11,24 @@ keyList = ['functionPlaceholder()', 'functionPlaceholder()', 'functionPlaceholde
 # first path: "path to LuaMacros.exe" second path: path to secondKeyboard-luaMacros-script
 lua = subprocess.Popen(r'"C:\Program Files (x86)\luaMacros\LuaMacros.exe" C:\Users\Valen\Github\Macro-Board\SECOND_KEYBOARD_script_for_LUA_MACROS.lua -r')
 
+hotKeys = [] # init hotkey list
+
+try:
+    with open('hotKeys.json') as jsonFile:
+        hotKeys = json.load(jsonFile)
+    jsonFile.close()
+    print('finished loading hotkeys')
+except BaseException as err:
+    print('\n\nERROR: Hotkeys failed to load. Check hotKeys.json. The following exception was raised:')
+    print(str(err) + '\n')
 
 def checkKey(key):
-    eval('keyFunctions.' + keyList[key])
+    for dic in hotKeys:
+        if dic['label'] == key:
+            if dic["type"] == 'explorerShortcut':
+                std.openExplorerAt(dic['path'])
+    else:
+        eval('keyFunctions.' + keyList[key])
 
 
 def on_press(key):
@@ -30,6 +46,11 @@ def on_press(key):
 def on_release(key):
     pass
 
-print('starting listener...')
-with keyboard.Listener(on_press=on_press,on_release=on_release) as listener:
-    listener.join()
+def main():
+    # add debug mode (with argparser)
+    print('starting listener...')
+    with keyboard.Listener(on_press=on_press,on_release=on_release) as listener:
+        listener.join()
+
+if __name__ == '__main__':
+    main()
