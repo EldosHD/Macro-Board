@@ -18,14 +18,6 @@ placeholder
 
 my friend is working on [another version](https://github.com/TimeElysium/secondKeybordShortcuts) that is based on my original framwork
 
-## To Do
-
-- add support for custom functions
-- add an installer that assembles hotKeys.json
-- finish readme
-
-- add more features
-
 ## Installation
 
 *note rewrite that*
