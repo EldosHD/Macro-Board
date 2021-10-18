@@ -13,7 +13,7 @@ This file is just to help you assign the right key!
 121 --> F10
 122 --> F11
 123 --> F12
-220 --> backslash
+220 --> backslash^
 49 --> 1
 50 --> 2
 51 --> 3

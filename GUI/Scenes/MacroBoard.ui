@@ -1,0 +1,1926 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1300</width>
+    <height>820</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="widget">
+   <widget class="QFrame" name="backgroundFrame">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>1280</width>
+      <height>800</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QFrame {
+	background-color: qlineargradient(spread:pad, x1:0.063, y1:0.937318, x2:1, y2:0, stop:0 		rgba(22, 28, 33, 255), stop:1 rgba(45, 57, 67, 255));
+	border-radius: 20px;
+}
+
+QPushButton {
+	background-color: #2d3943;
+	border-radius: 5px;
+	border: 1px solid #2b87d3;
+	color: #f0f0f0;
+}
+
+QPushButton::hover {
+	color: #2b87d3;
+}</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <widget class="QPushButton" name="key17">
+     <property name="geometry">
+      <rect>
+       <x>80</x>
+       <y>710</y>
+       <width>70</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>Ctrl</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key18">
+     <property name="geometry">
+      <rect>
+       <x>225</x>
+       <y>710</y>
+       <width>55</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>Alt</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key32">
+     <property name="geometry">
+      <rect>
+       <x>290</x>
+       <y>710</y>
+       <width>265</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>MACRO BOARD</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key17_2">
+     <property name="geometry">
+      <rect>
+       <x>760</x>
+       <y>710</y>
+       <width>60</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>Ctrl</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key18_2">
+     <property name="geometry">
+      <rect>
+       <x>565</x>
+       <y>710</y>
+       <width>55</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>Alt</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key39">
+     <property name="geometry">
+      <rect>
+       <x>940</x>
+       <y>710</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>→</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key37">
+     <property name="geometry">
+      <rect>
+       <x>840</x>
+       <y>710</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>←</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key40">
+     <property name="geometry">
+      <rect>
+       <x>890</x>
+       <y>710</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>↓</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key96">
+     <property name="geometry">
+      <rect>
+       <x>1000</x>
+       <y>710</y>
+       <width>90</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>0</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key110">
+     <property name="geometry">
+      <rect>
+       <x>1100</x>
+       <y>710</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>Del</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key89">
+     <property name="geometry">
+      <rect>
+       <x>200</x>
+       <y>660</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>Y</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key13_2">
+     <property name="geometry">
+      <rect>
+       <x>1150</x>
+       <y>660</y>
+       <width>40</width>
+       <height>90</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>Enter</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key188">
+     <property name="geometry">
+      <rect>
+       <x>550</x>
+       <y>660</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>,</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key66">
+     <property name="geometry">
+      <rect>
+       <x>400</x>
+       <y>660</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>B</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key98">
+     <property name="geometry">
+      <rect>
+       <x>1050</x>
+       <y>660</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>2</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key16">
+     <property name="geometry">
+      <rect>
+       <x>80</x>
+       <y>660</y>
+       <width>60</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>Shift</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key190">
+     <property name="geometry">
+      <rect>
+       <x>600</x>
+       <y>660</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>.</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key67">
+     <property name="geometry">
+      <rect>
+       <x>300</x>
+       <y>660</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>C</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key99">
+     <property name="geometry">
+      <rect>
+       <x>1100</x>
+       <y>660</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>3</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key16_2">
+     <property name="geometry">
+      <rect>
+       <x>700</x>
+       <y>660</y>
+       <width>120</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>Shift</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key78">
+     <property name="geometry">
+      <rect>
+       <x>450</x>
+       <y>660</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>N</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key189">
+     <property name="geometry">
+      <rect>
+       <x>650</x>
+       <y>660</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>-</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key38">
+     <property name="geometry">
+      <rect>
+       <x>890</x>
+       <y>660</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>↑</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key77">
+     <property name="geometry">
+      <rect>
+       <x>500</x>
+       <y>660</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>M</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key97">
+     <property name="geometry">
+      <rect>
+       <x>1000</x>
+       <y>660</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>1</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key88">
+     <property name="geometry">
+      <rect>
+       <x>250</x>
+       <y>660</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>X</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key86">
+     <property name="geometry">
+      <rect>
+       <x>350</x>
+       <y>660</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>V</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key74">
+     <property name="geometry">
+      <rect>
+       <x>470</x>
+       <y>610</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>J</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key192">
+     <property name="geometry">
+      <rect>
+       <x>620</x>
+       <y>610</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>Ö</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key222">
+     <property name="geometry">
+      <rect>
+       <x>670</x>
+       <y>610</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>Ä</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key70">
+     <property name="geometry">
+      <rect>
+       <x>320</x>
+       <y>610</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>F</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key101">
+     <property name="geometry">
+      <rect>
+       <x>1050</x>
+       <y>610</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>5</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key20">
+     <property name="geometry">
+      <rect>
+       <x>80</x>
+       <y>610</y>
+       <width>80</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>Caps
+Lock</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key75">
+     <property name="geometry">
+      <rect>
+       <x>520</x>
+       <y>610</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>K</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key191">
+     <property name="geometry">
+      <rect>
+       <x>720</x>
+       <y>610</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>#</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key83">
+     <property name="geometry">
+      <rect>
+       <x>220</x>
+       <y>610</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>S</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key102">
+     <property name="geometry">
+      <rect>
+       <x>1100</x>
+       <y>610</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>6</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key71">
+     <property name="geometry">
+      <rect>
+       <x>370</x>
+       <y>610</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>G</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key76">
+     <property name="geometry">
+      <rect>
+       <x>570</x>
+       <y>610</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>L</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key72">
+     <property name="geometry">
+      <rect>
+       <x>420</x>
+       <y>610</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>H</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key100">
+     <property name="geometry">
+      <rect>
+       <x>1000</x>
+       <y>610</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>4</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key65">
+     <property name="geometry">
+      <rect>
+       <x>170</x>
+       <y>610</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>A</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key68">
+     <property name="geometry">
+      <rect>
+       <x>270</x>
+       <y>610</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>D</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key107">
+     <property name="geometry">
+      <rect>
+       <x>1150</x>
+       <y>560</y>
+       <width>40</width>
+       <height>90</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>+</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key85">
+     <property name="geometry">
+      <rect>
+       <x>460</x>
+       <y>560</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>U</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key80">
+     <property name="geometry">
+      <rect>
+       <x>610</x>
+       <y>560</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>P</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key34">
+     <property name="geometry">
+      <rect>
+       <x>940</x>
+       <y>560</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>Page
+Down</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key186">
+     <property name="geometry">
+      <rect>
+       <x>660</x>
+       <y>560</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>Ü</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key82">
+     <property name="geometry">
+      <rect>
+       <x>310</x>
+       <y>560</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>R</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key104">
+     <property name="geometry">
+      <rect>
+       <x>1050</x>
+       <y>560</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>8</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key9">
+     <property name="geometry">
+      <rect>
+       <x>80</x>
+       <y>560</y>
+       <width>70</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>Tab</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key73">
+     <property name="geometry">
+      <rect>
+       <x>510</x>
+       <y>560</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>I</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key187">
+     <property name="geometry">
+      <rect>
+       <x>710</x>
+       <y>560</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>+</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key87">
+     <property name="geometry">
+      <rect>
+       <x>210</x>
+       <y>560</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>W</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key105">
+     <property name="geometry">
+      <rect>
+       <x>1100</x>
+       <y>560</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>9</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key13">
+     <property name="geometry">
+      <rect>
+       <x>770</x>
+       <y>560</y>
+       <width>50</width>
+       <height>90</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>Enter</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key84">
+     <property name="geometry">
+      <rect>
+       <x>360</x>
+       <y>560</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>T</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key79">
+     <property name="geometry">
+      <rect>
+       <x>560</x>
+       <y>560</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>O</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key46">
+     <property name="geometry">
+      <rect>
+       <x>840</x>
+       <y>560</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>Delete</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key35">
+     <property name="geometry">
+      <rect>
+       <x>890</x>
+       <y>560</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>End</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key90">
+     <property name="geometry">
+      <rect>
+       <x>410</x>
+       <y>560</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>Z</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key103">
+     <property name="geometry">
+      <rect>
+       <x>1000</x>
+       <y>560</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>7</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key81">
+     <property name="geometry">
+      <rect>
+       <x>160</x>
+       <y>560</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>Q</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key69">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>560</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>E</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key49">
+     <property name="geometry">
+      <rect>
+       <x>130</x>
+       <y>510</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>1</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key109">
+     <property name="geometry">
+      <rect>
+       <x>1150</x>
+       <y>510</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>-</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key56">
+     <property name="geometry">
+      <rect>
+       <x>480</x>
+       <y>510</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>8</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key219">
+     <property name="geometry">
+      <rect>
+       <x>630</x>
+       <y>510</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>?</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key33">
+     <property name="geometry">
+      <rect>
+       <x>940</x>
+       <y>510</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>Page
+Up</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key221">
+     <property name="geometry">
+      <rect>
+       <x>680</x>
+       <y>510</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>´</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key53">
+     <property name="geometry">
+      <rect>
+       <x>330</x>
+       <y>510</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>5</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key111">
+     <property name="geometry">
+      <rect>
+       <x>1050</x>
+       <y>510</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>/</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key220">
+     <property name="geometry">
+      <rect>
+       <x>80</x>
+       <y>510</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>^</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key57">
+     <property name="geometry">
+      <rect>
+       <x>530</x>
+       <y>510</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>9</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key8">
+     <property name="geometry">
+      <rect>
+       <x>730</x>
+       <y>510</y>
+       <width>90</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+       <pointsize>15</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>←</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key51">
+     <property name="geometry">
+      <rect>
+       <x>230</x>
+       <y>510</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>3</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key106">
+     <property name="geometry">
+      <rect>
+       <x>1100</x>
+       <y>510</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>*</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key54">
+     <property name="geometry">
+      <rect>
+       <x>380</x>
+       <y>510</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>6</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key48">
+     <property name="geometry">
+      <rect>
+       <x>580</x>
+       <y>510</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>0</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key45">
+     <property name="geometry">
+      <rect>
+       <x>840</x>
+       <y>510</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>Insert</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key36">
+     <property name="geometry">
+      <rect>
+       <x>890</x>
+       <y>510</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>Home</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key55">
+     <property name="geometry">
+      <rect>
+       <x>430</x>
+       <y>510</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>7</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key50">
+     <property name="geometry">
+      <rect>
+       <x>180</x>
+       <y>510</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>2</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key52">
+     <property name="geometry">
+      <rect>
+       <x>280</x>
+       <y>510</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>4</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key117">
+     <property name="geometry">
+      <rect>
+       <x>455</x>
+       <y>450</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>F6</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key120">
+     <property name="geometry">
+      <rect>
+       <x>630</x>
+       <y>450</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>F9</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key121">
+     <property name="geometry">
+      <rect>
+       <x>680</x>
+       <y>450</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>F10</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key115">
+     <property name="geometry">
+      <rect>
+       <x>330</x>
+       <y>450</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>F4</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key27">
+     <property name="geometry">
+      <rect>
+       <x>80</x>
+       <y>450</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>Esc</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key118">
+     <property name="geometry">
+      <rect>
+       <x>505</x>
+       <y>450</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>F7</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key122">
+     <property name="geometry">
+      <rect>
+       <x>730</x>
+       <y>450</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>F11</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key113">
+     <property name="geometry">
+      <rect>
+       <x>230</x>
+       <y>450</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>F2</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key123">
+     <property name="geometry">
+      <rect>
+       <x>780</x>
+       <y>450</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>F12</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key119">
+     <property name="geometry">
+      <rect>
+       <x>555</x>
+       <y>450</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>F8</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key116">
+     <property name="geometry">
+      <rect>
+       <x>405</x>
+       <y>450</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>F5</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key112">
+     <property name="geometry">
+      <rect>
+       <x>180</x>
+       <y>450</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>F1</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="key114">
+     <property name="geometry">
+      <rect>
+       <x>280</x>
+       <y>450</y>
+       <width>40</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Segoe UI</family>
+      </font>
+     </property>
+     <property name="text">
+      <string>F3</string>
+     </property>
+    </widget>
+    <widget class="QFrame" name="keyboardBackgroundFrame">
+     <property name="geometry">
+      <rect>
+       <x>45</x>
+       <y>415</y>
+       <width>1180</width>
+       <height>370</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: 1px solid #f0f0f0;</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+    </widget>
+    <zorder>keyboardBackgroundFrame</zorder>
+    <zorder>key186</zorder>
+    <zorder>key122</zorder>
+    <zorder>key188</zorder>
+    <zorder>key192</zorder>
+    <zorder>key52</zorder>
+    <zorder>key13_2</zorder>
+    <zorder>key82</zorder>
+    <zorder>key13</zorder>
+    <zorder>key46</zorder>
+    <zorder>key123</zorder>
+    <zorder>key118</zorder>
+    <zorder>key65</zorder>
+    <zorder>key116</zorder>
+    <zorder>key113</zorder>
+    <zorder>key221</zorder>
+    <zorder>key187</zorder>
+    <zorder>key102</zorder>
+    <zorder>key96</zorder>
+    <zorder>key16</zorder>
+    <zorder>key84</zorder>
+    <zorder>key106</zorder>
+    <zorder>key36</zorder>
+    <zorder>key107</zorder>
+    <zorder>key45</zorder>
+    <zorder>key54</zorder>
+    <zorder>key73</zorder>
+    <zorder>key8</zorder>
+    <zorder>key97</zorder>
+    <zorder>key109</zorder>
+    <zorder>key68</zorder>
+    <zorder>key80</zorder>
+    <zorder>key89</zorder>
+    <zorder>key55</zorder>
+    <zorder>key81</zorder>
+    <zorder>key32</zorder>
+    <zorder>key39</zorder>
+    <zorder>key83</zorder>
+    <zorder>key18_2</zorder>
+    <zorder>key190</zorder>
+    <zorder>key121</zorder>
+    <zorder>key34</zorder>
+    <zorder>key40</zorder>
+    <zorder>key220</zorder>
+    <zorder>key48</zorder>
+    <zorder>key115</zorder>
+    <zorder>key110</zorder>
+    <zorder>key98</zorder>
+    <zorder>key111</zorder>
+    <zorder>key103</zorder>
+    <zorder>key88</zorder>
+    <zorder>key79</zorder>
+    <zorder>key86</zorder>
+    <zorder>key38</zorder>
+    <zorder>key69</zorder>
+    <zorder>key90</zorder>
+    <zorder>key114</zorder>
+    <zorder>key77</zorder>
+    <zorder>key50</zorder>
+    <zorder>key16_2</zorder>
+    <zorder>key85</zorder>
+    <zorder>key49</zorder>
+    <zorder>key18</zorder>
+    <zorder>key72</zorder>
+    <zorder>key189</zorder>
+    <zorder>key100</zorder>
+    <zorder>key112</zorder>
+    <zorder>key105</zorder>
+    <zorder>key78</zorder>
+    <zorder>key219</zorder>
+    <zorder>key75</zorder>
+    <zorder>key17</zorder>
+    <zorder>key222</zorder>
+    <zorder>key117</zorder>
+    <zorder>key66</zorder>
+    <zorder>key35</zorder>
+    <zorder>key33</zorder>
+    <zorder>key20</zorder>
+    <zorder>key57</zorder>
+    <zorder>key191</zorder>
+    <zorder>key120</zorder>
+    <zorder>key87</zorder>
+    <zorder>key104</zorder>
+    <zorder>key101</zorder>
+    <zorder>key71</zorder>
+    <zorder>key56</zorder>
+    <zorder>key9</zorder>
+    <zorder>key53</zorder>
+    <zorder>key119</zorder>
+    <zorder>key70</zorder>
+    <zorder>key74</zorder>
+    <zorder>key37</zorder>
+    <zorder>key17_2</zorder>
+    <zorder>key27</zorder>
+    <zorder>key67</zorder>
+    <zorder>key51</zorder>
+    <zorder>key76</zorder>
+    <zorder>key99</zorder>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
