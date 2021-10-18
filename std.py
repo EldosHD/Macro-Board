@@ -28,7 +28,19 @@ def loadSettings():
         print(str(err) + '\n')
 
 def sendInChat(strToSend: str, mode='std'):
-    #add modes
+    '''
+    Types a given string. If you dont specify the mode it will default to "std" mode.
+    Modes:
+
+    +-----------+----------------------------------------------------------+
+    |   Modes   |                     Description                          |
+    +-----------+----------------------------------------------------------+
+    | std       | Just types the given string.                             |
+    | lol       | Opens the Chat by tapping Enter, types the given string  |
+    |           | afterwards and presses Enter again to send the string.   |
+    | minecraft | Same as "lol", but it opens the chat by tapping t.       |
+    +-----------+----------------------------------------------------------+    
+    '''
     if mode == 'std':
         keyboard.type(strToSend)
     elif mode == 'lol':
