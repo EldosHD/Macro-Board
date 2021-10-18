@@ -20,8 +20,7 @@ my friend is working on [another version](https://github.com/TimeElysium/secondK
 
 ## To Do
 
-- create an "type" in hotkeys.json for every function in std and stdExtensions
-- port all current hotkeys to the hotkeys.json file
+- add modes to sendInChat()
 - add an easy way to send text (e.g. in a game chat)  (with option for multiple games?!)
 - finish readme
 

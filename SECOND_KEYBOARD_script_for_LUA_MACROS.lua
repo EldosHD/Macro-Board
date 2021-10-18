@@ -42,7 +42,6 @@ sendToAHK = function (key)
       file:close()
       lmc_send_keys('{F19}')  -- This presses F24. Using the F24 key to trigger AutoHotKey is probably NOT the best method. Feel free to program something better!
 end
-
 local config = {
 	[45]  = "insert",
 	[36]  = "home",
