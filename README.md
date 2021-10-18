@@ -20,11 +20,15 @@ my friend is working on [another version](https://github.com/TimeElysium/secondK
 
 ## To Do
 
-- add modes to sendInChat()
-- add an easy way to send text (e.g. in a game chat)  (with option for multiple games?!)
+- add support for custom functions
+- add an installer that assembles hotKeys.json
 - finish readme
 
+- add more features
+
 ## Installation
+
+*note rewrite that*
 
 I´ll probably write an installer script for that. But for now, here are the basic instructions:
 
