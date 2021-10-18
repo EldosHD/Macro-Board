@@ -27,7 +27,7 @@ my friend is working on [another version](https://github.com/TimeElysium/secondK
 
 ## Installation
 
-I´ll probably write an install for that. But for now, here are the basic instructions:
+I´ll probably write an installer script for that. But for now, here are the basic instructions:
 
 1. Download the code an extract it to ur fav location.
 2. install luamacros
