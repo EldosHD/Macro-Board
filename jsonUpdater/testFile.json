@@ -1,0 +1,105 @@
+[
+    {
+        "name": "q",
+        "label": "81",
+        "type": "explorerShortcut",
+        "path": "C:\\Users\\Valen\\AppData\\Roaming\\.minecraft"
+    },
+    {
+        "name": "w",
+        "label": "87",
+        "type": "explorerShortcut",
+        "path": "C:\\Users\\Valen\\AppData\\Roaming\\.minecraft\\mods"
+    },
+    {
+        "name": "e",
+        "label": "69",
+        "type": "explorerShortcut",
+        "path": "C:\\Users\\Valen\\OneDrive\\Desktop\\HotSwap Mods"
+    },
+    {
+        "name": "r",
+        "label": "82",
+        "type": "copyToClipboard",
+        "content": "1495774276"
+    },
+    {
+        "name": "t",
+        "label": "84",
+        "type": "sendInChat",
+        "content": "Hello World",
+        "mode": "minecraft"
+    },
+    {
+        "name": "a",
+        "label": "65",
+        "type": "explorerShortcut",
+        "path": "C:\\Users\\Valen\\Downloads"
+    },
+    {
+        "name": "s",
+        "label": "83",
+        "type": "explorerShortcut",
+        "path": "C:\\"
+    },
+    {
+        "name": "d",
+        "label": "68",
+        "type": "explorerShortcut",
+        "path": "D:\\"
+    },
+    {
+        "name": "f",
+        "label": "70",
+        "type": "explorerShortcut",
+        "path": "C:\\Users\\Valen\\OneDrive"
+    },
+    {
+        "name": "Y",
+        "label": "89",
+        "type": "explorerShortcut",
+        "path": "C:\\Users\\Valen\\OneDrive\\Uni"
+    },
+    {
+        "name": "X",
+        "label": "88",
+        "type": "explorerShortcut",
+        "path": "C:\\Users\\Valen\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup"
+    },
+    {
+        "name": "C",
+        "label": "67",
+        "type": "explorerShortcut",
+        "path": "C:\\2nd-keyboard"
+    },
+    {
+        "name": "V",
+        "label": "86",
+        "type": "explorerShortcut",
+        "path": "C:\\Users\\Valen\\OneDrive\\Dokumente"
+    },
+    {
+        "name": "num7",
+        "label":"103",
+        "type": "holdMouseButton",
+        "button": "left"
+    },
+    {
+        "name": "num4",
+        "label":"100",
+        "type": "holdMouseButton",
+        "button": "right"
+    },
+    {
+        "name": "num8",
+        "label": "104",
+        "type": "autoClicker",
+        "button": "left"
+    },
+    {
+        "name": "num5",
+        "label": "101",
+        "type": "autoClicker",
+        "button": "right"
+    }
+]

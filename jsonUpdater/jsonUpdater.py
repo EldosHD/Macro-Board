@@ -1,6 +1,23 @@
 import json
 import argparse
 
+hotKeys = [] # init array for the jsonfile
+
+def main():
+    try:
+        with open('testFile.json') as jsonFile:
+            hotKeys = json.load(jsonFile)
+        jsonFile.close()
+        print('finished loading json file!')
+    except BaseException as err:
+        print('\nERROR: Json File failed to load. The following exception was raised:')
+        print('\n' + str(err) + '\n')
+
+    print(f'Json file: {str(hotKeys)}')
+
+
+
+
 #read in json file
 #if hotkey exists:
     #update with given argument
