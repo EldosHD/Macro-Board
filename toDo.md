@@ -4,6 +4,7 @@
 
 - add support for custom functions
 - add updater cmdlet
+- add send_key command
 
 ## General
 
