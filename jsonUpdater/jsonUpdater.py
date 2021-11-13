@@ -21,6 +21,7 @@ parentParser = argparse.ArgumentParser('The Parrent parser', add_help=False)
 parentParser.add_argument('--file',type=pathlib.Path,default=givenJsonFile ,help='Not implemented yet')
 parentParser.add_argument('--no-color', help='Not implemented yet', default=True, action='store_false')
 parentParser.add_argument('--version', help='prints out the programs version number',action='version' ,version='%(prog)s 0.1')
+parentParser.add_argument('-o','--output', help='creates the given file and dumps the updated input file in there')
 
 subparsers = parser.add_subparsers(description='valid subcommands NOTE: only use one of these', dest='subCommand')
 subparsers.required = True
@@ -31,12 +32,14 @@ create = subparsers.add_parser('create',parents=[parentParser], help='creates a 
 create.add_argument('name', help='Not implemented yet')
 create.add_argument('type', help='Not implemented yet',choices=possibleHotkeys)
 create.add_argument('content', help='Not implemented yet')
-create.add_argument('-o','--output', help='creates the given file and dumps the updated input file in there')
 create.add_argument('-l','--list', help='lists all the possible hotkeys')
 
 #merge
 merge = subparsers.add_parser('merge', parents=[parentParser], help='merges the current hotkey file with a given one')
 merge.add_argument('merge', type=pathlib.Path, help='Not implemented yet')
+group = merge.add_mutually_exclusive_group()
+group.add_argument('--force', default=False, action='store_true', help='overrites the old hotkey with the new one without asking (not implemented yet)')
+group.add_argument('--keep', default=False, action='store_true', help='doesn´t overrite old hotkeys. Just adds the new ones (not implemented yet)')
 
 #fix
 fix = subparsers.add_parser('fix', help='COMING SOON',parents=[parentParser])
