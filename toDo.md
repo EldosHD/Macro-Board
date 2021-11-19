@@ -5,6 +5,7 @@
 - add support for custom functions
 - add updater cmdlet
 - add send_key command
+- the install should also install all required librarys with pip
 
 ## General
 

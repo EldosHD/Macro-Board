@@ -1,5 +1,7 @@
 '''
-The standard libary for the 2nd keyboard.
+The standard libary for the 2nd keyboard. There is a subfolder called "stdExtensions". All other functions that I (or others) wrote can be found there.
+I am not including the other functions for one simple reason. I am not sure how big this program will grow. By not including all functions in one script the user can decide which features they need.
+That way this script wont take up to much space. And less code means less points of failure.
 '''
 import json
 import subprocess
@@ -15,7 +17,7 @@ keyboard = pynput.keyboard.Controller()
 
 def loadSettings():
     '''
-    Loads the settings from settings.json and puts it in the dictionary settings.
+    Loads the settings from settings.json and puts it in a dictionary called settings.
     '''
     try:
         with open('settings.json') as jsonFile:
@@ -29,11 +31,12 @@ def loadSettings():
 
 def sendInChat(strToSend: str, mode='std'):
     '''
-    Types a given string. If you dont specify the mode it will default to "std" mode.
+    Types a given string or sends it in the in game chat. Since different games uses different buttons for the game chat, there are multiple modes for this function.
+    If you dont specify the mode it will default to "std" mode.
     Modes:
 
     +-----------+----------------------------------------------------------+
-    |   Modes   |                     Description                          |
+    |   Mode    |                     Description                          |
     +-----------+----------------------------------------------------------+
     | std       | Just types the given string.                             |
     | lol       | Opens the Chat by tapping Enter, types the given string  |
