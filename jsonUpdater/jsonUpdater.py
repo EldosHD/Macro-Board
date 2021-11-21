@@ -1,12 +1,40 @@
 import json
 import argparse
+from argparse import RawTextHelpFormatter
 import pathlib
 import logging as log
 import sys
+import textwrap
+
+class SmartFormatter(argparse.HelpFormatter):
+
+    def _split_lines(self, text, width):
+        if text.startswith('R|'):
+            return text[2:].splitlines()  
+        # this is the RawTextHelpFormatter._split_lines
+        return argparse.HelpFormatter._split_lines(self, text, width)
+
+class color:
+   PURPLE = '\033[95m'
+   CYAN = '\033[96m'
+   DARKCYAN = '\033[36m'
+   BLUE = '\033[94m'
+   GREEN = '\033[92m'
+   YELLOW = '\033[93m'
+   RED = '\033[91m'
+   BOLD = '\033[1m'
+   UNDERLINE = '\033[4m'
+   END = '\033[0m'
+
 
 hotKeys = [] # init array for the jsonfile
 
-possibleHotkeys = ['explorerShortcut','copyToClipboard','holdMouseButton','autoClicker','sendInChat']
+possibleHotkeys = f'''R|The possible options are:
+    explorerShortcut: Opens your file Explorer at a given position. (NOTE: Currently Widows only)
+    copyToClipboard:  Copys a given string to your clipboard
+    holdMouseButton:  Presses the given mouse button without releasing it
+    autoClicker:      Starts clicking a given mouse button with a given intervall
+    sendInChat:       Sends a given string in the in game chat. It supports different games'''
 
 hotKeyName = ''
 hotKeyType = ''
@@ -15,7 +43,7 @@ hotKeyContent = ''
 givenJsonFile = pathlib.PureWindowsPath('hotKeys.json')
 
 
-parser = argparse.ArgumentParser(description='Not working yet')
+parser = argparse.ArgumentParser(description='Not working yet',epilog='This is a epilog. TODO: Write that')
 #options that are always available
 parentParser = argparse.ArgumentParser('The Parrent parser', add_help=False)
 parentParser.add_argument('--file',type=pathlib.Path,default=givenJsonFile ,help='Not implemented yet')
@@ -27,12 +55,12 @@ subparsers = parser.add_subparsers(description='valid subcommands NOTE: only use
 subparsers.required = True
 
 #create
-create = subparsers.add_parser('create',parents=[parentParser], help='creates a Hotkey (Note: If you provide a label that already exists it will override that hotkey)',description='NOTE: add description')
+create = subparsers.add_parser('create',parents=[parentParser],help='creates a Hotkey (Note: If you provide a label that already exists it will override that hotkey)',description='NOTE: add description',formatter_class=SmartFormatter)
 
 create.add_argument('name', help='Not implemented yet')
-create.add_argument('type', help='Not implemented yet',choices=possibleHotkeys)
+create.add_argument('type', help=textwrap.dedent(possibleHotkeys))
 create.add_argument('content', help='Not implemented yet')
-create.add_argument('-l','--list', help='lists all the possible hotkeys')
+create.add_argument('-l','--list', help='lists all the possible hotkeys', default=False, action='store_true')
 
 #merge
 merge = subparsers.add_parser('merge', parents=[parentParser], help='merges the current hotkey file with a given one')
@@ -57,19 +85,20 @@ args = parser.parse_args()
 print(args)
 
 def create():
-    print('create a hotkey')
+    print('create not implemented yet')
 
 def merge():
-    print('not implemented yet')
+    print('merge not implemented yet')
 
 def fix():
-    print('COMING SOON')
+    print('fix not implemented yet')
 
 def clean():
-    print('not implemented yet')
+    print('clean not implemented yet')
 
 
 def main():
+    print(color.RED + 'TODO: Make path for both windows and linux' + color.END)
     global givenJsonFile    
 
     if args.file != 'hotKeys.json':
