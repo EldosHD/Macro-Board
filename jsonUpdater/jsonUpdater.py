@@ -36,6 +36,8 @@ possibleHotkeys = f'''R|The possible options are:
     autoClicker:      Starts clicking a given mouse button with a given intervall
     sendInChat:       Sends a given string in the in game chat. It supports different games'''
 
+keyList = {'escape': '27', 'F1': '112', 'F2': '113', 'F3': '114', 'F4': '115', 'F5': '116', 'F6': '117', 'F7': '118', 'F8': '119', 'F9': '120', 'F10': '121', 'F11': '122', 'F12': '123', 'backslash': '220', '1': '49', '2': '50', '3': '51', '4': '52', '5': '53', '6': '54', '7': '55', '8': '56', '9': '57', '0': '48', 'leftbracket': '219', 'rightbracket': '221', 'backspace': '8', 'tab': '9', 'q': '81', 'w': '87', 'e': '69', 'r': '82', 't': '84', 'z': '90', 'u': '85', 'i': '73', 'o': '79', 'p': '80', 'semicolon': '186', 'equals': '187', 'enter': '13', 'capslock': '20', 'a': '65', 's': '83', 'd': '68', 'f': '70', 'g': '71', 'h': '72', 'j': '74', 'k': '75', 'l': '76', 'apo': '192', 'singlequote': '222', 'slash': '191', 'rShift': '16', 'y': '89', 'x': '88', 'c': '67', 'v': '86', 'b': '66', 'n': '78', 'm': '77', 'comma': '188', 'period': '190', 'minus': '189', 'rCtrl': '17', 'alt': '18', 'space': '32', 'insert': '45', 'home': '36', 'pageup': '33', 'delete': '46', 'end': '35', 'pagedown': '34', 'left': '37', 'up': '38', 'down': '40', 'right': '39', 'num0': '96', 'num1': '97', 'num2': '98', 'num3': '99', 'num4': '100', 'num5': '101', 'num6': '102', 'num7': '103', 'num8': '104', 'num9': '105', 'numDiv': '111', 'numMult': '106', 'numMinus': '109', 'numPlus': '107', 'numDelete': '110'}
+
 hotKeyName = ''
 hotKeyType = ''
 hotKeyContent = ''
@@ -43,12 +45,13 @@ hotKeyContent = ''
 givenJsonFile = pathlib.PureWindowsPath('hotKeys.json')
 
 
-parser = argparse.ArgumentParser(description='Not working yet',epilog='This is a epilog. TODO: Write that')
+parser = argparse.ArgumentParser(prog='PROG',description='Not working yet',epilog='This is a epilog. TODO: Write that')
 #options that are always available
 parentParser = argparse.ArgumentParser('The Parrent parser', add_help=False)
 parentParser.add_argument('--file',type=pathlib.Path,default=givenJsonFile ,help='Not implemented yet')
 parentParser.add_argument('--no-color', help='Not implemented yet', default=True, action='store_false')
 parentParser.add_argument('--version', help='prints out the programs version number',action='version' ,version='%(prog)s 0.1')
+parentParser.add_argument('-v','--verbosity',help='increases the verbosity',action='count',default=0)
 parentParser.add_argument('-o','--output', help='creates the given file and dumps the updated input file in there')
 
 subparsers = parser.add_subparsers(description='valid subcommands NOTE: only use one of these', dest='subCommand')
@@ -57,10 +60,10 @@ subparsers.required = True
 #create
 create = subparsers.add_parser('create',parents=[parentParser],help='creates a Hotkey (Note: If you provide a label that already exists it will override that hotkey)',description='NOTE: add description',formatter_class=SmartFormatter)
 
-create.add_argument('name', help='Not implemented yet')
+create.add_argument('name', help='use the name of a key. Use -l to list all possible keys')
 create.add_argument('type', help=textwrap.dedent(possibleHotkeys))
 create.add_argument('content', help='Not implemented yet')
-create.add_argument('-l','--list', help='lists all the possible hotkeys', default=False, action='store_true')
+create.add_argument('-l','--list', help='lists all the possible keys', default=False, action='store_true')
 
 #merge
 merge = subparsers.add_parser('merge', parents=[parentParser], help='merges the current hotkey file with a given one')
@@ -82,10 +85,11 @@ clean.add_argument('clean', help='Not implemented yet', action='store_true')
 
 args = parser.parse_args()
 
-print(args)
-
 def create():
-    print('create not implemented yet')
+    print(f'{color.RED}create not implemented yet{color.END}')
+    if args.list == True:
+        for key in keyList:
+            print(f'Key: {key} -> Label: {keyList[key]}')
 
 def merge():
     print('merge not implemented yet')
@@ -98,7 +102,6 @@ def clean():
 
 
 def main():
-    print(color.RED + 'TODO: Make path for both windows and linux' + color.END)
     global givenJsonFile    
 
     if args.file != 'hotKeys.json':
@@ -108,12 +111,15 @@ def main():
         with open(givenJsonFile) as jsonFile:
             hotKeys = json.load(jsonFile)
         jsonFile.close()
-        print('finished loading json file!')
+        if args.verbosity >= 1:
+            print(f'{color.GREEN}finished loading json file!{color.END}')
     except BaseException as err:
         print(f'\nThe given jsonFile ({givenJsonFile}) was not loaded correctly. By default this program looks for "hotKeys.json" in the current directory. You can specify another with --file [FILENAME]')
         sys.exit()
 
-    print(f'Json file: {str(hotKeys)}')
+    if args.verbosity >= 2:
+        print(f'Args: {args}')
+        print(f'Json file: {str(hotKeys)}')
 
     if args.subCommand == 'create':
         create()
