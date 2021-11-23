@@ -11,6 +11,7 @@
 
 - add more features
 - finish readme
+- add support for seperate paths for windows and linux for openExplorerAt
 
 ## Done by others
 

@@ -1,8 +1,6 @@
 import json
 import argparse
-from argparse import RawTextHelpFormatter
 import pathlib
-import logging as log
 import sys
 import textwrap
 
@@ -15,16 +13,27 @@ class SmartFormatter(argparse.HelpFormatter):
         return argparse.HelpFormatter._split_lines(self, text, width)
 
 class color:
-   PURPLE = '\033[95m'
-   CYAN = '\033[96m'
-   DARKCYAN = '\033[36m'
-   BLUE = '\033[94m'
-   GREEN = '\033[92m'
-   YELLOW = '\033[93m'
-   RED = '\033[91m'
-   BOLD = '\033[1m'
-   UNDERLINE = '\033[4m'
-   END = '\033[0m'
+    PURPLE = '\033[95m'
+    CYAN = '\033[96m'
+    DARKCYAN = '\033[36m'
+    BLUE = '\033[94m'
+    GREEN = '\033[92m'
+    YELLOW = '\033[93m'
+    RED = '\033[91m'
+    BOLD = '\033[1m'
+    UNDERLINE = '\033[4m'
+    END = '\033[0m'
+ 
+    # def noColorMode():
+    #     global CYAN;        color.CYAN = ''
+    #     global DARKCYAN;    color.DARKCYAN = ''
+    #     global BLUE;        color.BLUE = ''
+    #     global GREEN;       color.GREEN = ''
+    #     global YELLOW;      color.YELLOW = ''
+    #     global RED;         color.RED = ''
+    #     global BOLD;        color.BOLD = ''
+    #     global UNDERLINE;   color.UNDERLINE = ''
+    #     global END;         color.END = ''
 
 
 hotKeys = [] # init array for the jsonfile
@@ -51,6 +60,7 @@ parentParser = argparse.ArgumentParser('The Parrent parser', add_help=False)
 parentParser.add_argument('--file',type=pathlib.Path,default=givenJsonFile ,help='Not implemented yet')
 parentParser.add_argument('--no-color', help='Not implemented yet', default=True, action='store_false')
 parentParser.add_argument('--version', help='prints out the programs version number',action='version' ,version='%(prog)s 0.1')
+parentParser.add_argument('--json-no-exit', help='wont exit, if the JSON file is not loaded correctly. Sets "givenJsonFile" to "ERROR"', action='store_true')
 parentParser.add_argument('-v','--verbosity',help='increases the verbosity',action='count',default=0)
 parentParser.add_argument('-o','--output', help='creates the given file and dumps the updated input file in there')
 
@@ -63,14 +73,13 @@ create = subparsers.add_parser('create',parents=[parentParser],help='creates a H
 create.add_argument('name', help='use the name of a key. Use -l to list all possible keys')
 create.add_argument('type', help=textwrap.dedent(possibleHotkeys))
 create.add_argument('content', help='Not implemented yet')
-create.add_argument('-l','--list', help='lists all the possible keys', default=False, action='store_true')
 
 #merge
 merge = subparsers.add_parser('merge', parents=[parentParser], help='merges the current hotkey file with a given one')
 merge.add_argument('merge', type=pathlib.Path, help='Not implemented yet')
-group = merge.add_mutually_exclusive_group()
-group.add_argument('--force', default=False, action='store_true', help='overrites the old hotkey with the new one without asking (not implemented yet)')
-group.add_argument('--keep', default=False, action='store_true', help='doesn´t overrite old hotkeys. Just adds the new ones (not implemented yet)')
+forceKeepGroup = merge.add_mutually_exclusive_group()
+forceKeepGroup.add_argument('--force', default=False, action='store_true', help='overrites the old hotkey with the new one without asking (not implemented yet)')
+forceKeepGroup.add_argument('--keep', default=False, action='store_true', help='doesn´t overrite old hotkeys. Just adds the new ones (not implemented yet)')
 
 #fix
 fix = subparsers.add_parser('fix', help='COMING SOON',parents=[parentParser])
@@ -81,27 +90,47 @@ fix.add_argument('--ignore-names', help='not implemented yet', action='store_tru
 clean = subparsers.add_parser('clean', parents=[parentParser], help='cleans the given json file of unnessesary/garbage code (like e.g. a function with name "aq" or lable "420") (Not Implemented Yet!)')
 clean.add_argument('clean', help='Not implemented yet', action='store_true')
 
+#list
+#ERROR: default=False nicht möglich
+hotKeyList = subparsers.add_parser('list', parents=[parentParser],help='lists all the possible keys')
+hotKeyList.add_argument('list', default=False, action='store_true')
+
 
 
 args = parser.parse_args()
 
-def create():
+def createSubcommand():
     print(f'{color.RED}create not implemented yet{color.END}')
-    if args.list == True:
-        for key in keyList:
-            print(f'Key: {key} -> Label: {keyList[key]}')
+    print(hotKeys)
 
-def merge():
+def mergeSubcommand():
     print('merge not implemented yet')
 
-def fix():
+def fixSubcommand():
     print('fix not implemented yet')
 
-def clean():
+def cleanSubcommand():
     print('clean not implemented yet')
+
+def listSubcommand():
+    # List all keys
+    for key in keyList:
+        print(f'Key: {key} -> Label: {keyList[key]}')
 
 
 def main():
+    if args.no_color == False:
+        color.PURPLE = ''
+        color.CYAN = ''
+        color.DARKCYAN = ''
+        color.BLUE = ''
+        color.GREEN = ''
+        color.YELLOW = ''
+        color.RED = ''
+        color.BOLD = ''
+        color.UNDERLINE = ''
+        color.END = ''
+
     global givenJsonFile    
 
     if args.file != 'hotKeys.json':
@@ -114,21 +143,24 @@ def main():
         if args.verbosity >= 1:
             print(f'{color.GREEN}finished loading json file!{color.END}')
     except BaseException as err:
-        print(f'\nThe given jsonFile ({givenJsonFile}) was not loaded correctly. By default this program looks for "hotKeys.json" in the current directory. You can specify another with --file [FILENAME]')
-        sys.exit()
+        if args.json_no_exit == False:
+            print(f'\n{color.RED}The given jsonFile ({givenJsonFile}) was not loaded correctly. By default this program looks for "hotKeys.json" in the current directory. You can specify another with --file [FILENAME]{color.END}')
+            sys.exit()
 
     if args.verbosity >= 2:
-        print(f'Args: {args}')
-        print(f'Json file: {str(hotKeys)}')
+        print(f'{color.PURPLE}Args: {args}{color.END}')
+        print(f'{color.CYAN}Json file: {str(hotKeys)}{color.END}')
 
     if args.subCommand == 'create':
-        create()
+        createSubcommand()
     elif args.subCommand == 'merge':
-        merge()
+        mergeSubcommand()
     elif args.subCommand == 'fix':
-        fix()
+        fixSubcommand()
     elif args.subCommand == 'clean':
-        clean()
+        cleanSubcommand()
+    elif args.subCommand == 'list':
+        listSubcommand()
 
 
 
