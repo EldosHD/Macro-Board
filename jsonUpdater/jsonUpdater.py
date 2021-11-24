@@ -1,5 +1,6 @@
 import json
 import argparse
+from os import name
 import pathlib
 import sys
 import textwrap
@@ -26,7 +27,7 @@ class color:
     END = '\033[0m'
 
 
-hotKeys = [] # init array for the jsonfile
+hotKeys = {} # init dict for the jsonfile
 
 possibleHotkeys = f'''R|The possible options are:
     explorerShortcut: Opens your file Explorer at a given position. (NOTE: Currently Widows only)
@@ -35,11 +36,27 @@ possibleHotkeys = f'''R|The possible options are:
     autoClicker:      Starts clicking a given mouse button with a given intervall
     sendInChat:       Sends a given string in the in game chat. It supports different games'''
 
-keyList = {'escape': '27', 'F1': '112', 'F2': '113', 'F3': '114', 'F4': '115', 'F5': '116', 'F6': '117', 'F7': '118', 'F8': '119', 'F9': '120', 'F10': '121', 'F11': '122', 'F12': '123', 'backslash': '220', '1': '49', '2': '50', '3': '51', '4': '52', '5': '53', '6': '54', '7': '55', '8': '56', '9': '57', '0': '48', 'leftbracket': '219', 'rightbracket': '221', 'backspace': '8', 'tab': '9', 'q': '81', 'w': '87', 'e': '69', 'r': '82', 't': '84', 'z': '90', 'u': '85', 'i': '73', 'o': '79', 'p': '80', 'semicolon': '186', 'equals': '187', 'enter': '13', 'capslock': '20', 'a': '65', 's': '83', 'd': '68', 'f': '70', 'g': '71', 'h': '72', 'j': '74', 'k': '75', 'l': '76', 'apo': '192', 'singlequote': '222', 'slash': '191', 'rShift': '16', 'y': '89', 'x': '88', 'c': '67', 'v': '86', 'b': '66', 'n': '78', 'm': '77', 'comma': '188', 'period': '190', 'minus': '189', 'rCtrl': '17', 'alt': '18', 'space': '32', 'insert': '45', 'home': '36', 'pageup': '33', 'delete': '46', 'end': '35', 'pagedown': '34', 'left': '37', 'up': '38', 'down': '40', 'right': '39', 'num0': '96', 'num1': '97', 'num2': '98', 'num3': '99', 'num4': '100', 'num5': '101', 'num6': '102', 'num7': '103', 'num8': '104', 'num9': '105', 'numDiv': '111', 'numMult': '106', 'numMinus': '109', 'numPlus': '107', 'numDelete': '110'}
+possibleContent = f'''R|You can use the following contents:
+    for explorerShortcut: specify a path to the directory you want your explorer to open at
+    for copyToClipboard:  specify the string you want to copy to your clipboard
+    for holdMouseButton:  specify the button you want to hold down [left | right]
+    for autoClicker:      specify the button you want to autoclick [left | right]
+    for sendInChat:       specify the string you want to send in your game chat. If you want to change the mode, use "--mode" (see below)
+'''
 
-hotKeyName = ''
-hotKeyType = ''
-hotKeyContent = ''
+possibleModes = '''R|Only required if you are using "sendInChat". It defaults to "std"
++-----------+----------------------------------------------------------+
+|   Mode    |                     Description                          |
++-----------+----------------------------------------------------------+
+| std       | Just types the given string.                             |
+| lol       | Opens the Chat by tapping Enter, types the given string  |
+|           | afterwards and presses Enter again to send the string.   |
+| minecraft | Same as "lol", but it opens the chat by tapping t.       |
++-----------+----------------------------------------------------------+
+'''
+
+
+keyList = {'escape': '27', 'F1': '112', 'F2': '113', 'F3': '114', 'F4': '115', 'F5': '116', 'F6': '117', 'F7': '118', 'F8': '119', 'F9': '120', 'F10': '121', 'F11': '122', 'F12': '123', 'backslash': '220', '1': '49', '2': '50', '3': '51', '4': '52', '5': '53', '6': '54', '7': '55', '8': '56', '9': '57', '0': '48', 'leftbracket': '219', 'rightbracket': '221', 'backspace': '8', 'tab': '9', 'q': '81', 'w': '87', 'e': '69', 'r': '82', 't': '84', 'z': '90', 'u': '85', 'i': '73', 'o': '79', 'p': '80', 'semicolon': '186', 'equals': '187', 'enter': '13', 'capslock': '20', 'a': '65', 's': '83', 'd': '68', 'f': '70', 'g': '71', 'h': '72', 'j': '74', 'k': '75', 'l': '76', 'apo': '192', 'singlequote': '222', 'slash': '191', 'rShift': '16', 'y': '89', 'x': '88', 'c': '67', 'v': '86', 'b': '66', 'n': '78', 'm': '77', 'comma': '188', 'period': '190', 'minus': '189', 'rCtrl': '17', 'alt': '18', 'space': '32', 'insert': '45', 'home': '36', 'pageup': '33', 'delete': '46', 'end': '35', 'pagedown': '34', 'left': '37', 'up': '38', 'down': '40', 'right': '39', 'num0': '96', 'num1': '97', 'num2': '98', 'num3': '99', 'num4': '100', 'num5': '101', 'num6': '102', 'num7': '103', 'num8': '104', 'num9': '105', 'numDiv': '111', 'numMult': '106', 'numMinus': '109', 'numPlus': '107', 'numDelete': '110'}
 
 givenJsonFile = pathlib.PureWindowsPath('hotKeys.json')
 
@@ -62,9 +79,12 @@ subparsers.required = True
 #create
 create = subparsers.add_parser('create',parents=[parentParser, fileUseParser],help='creates a Hotkey (Note: If you provide a label that already exists it will override that hotkey)',description='NOTE: add description',formatter_class=SmartFormatter)
 
-create.add_argument('name', help='use the name of a key. Use -l to list all possible keys')
+create.add_argument('name', help='use the name of a key. Use "PROG list" to list all possible keys')
 create.add_argument('type', help=textwrap.dedent(possibleHotkeys))
-create.add_argument('content', help='Not implemented yet')
+create.add_argument('content', help=textwrap.dedent(possibleContent))
+create.add_argument('--label', help='specify a label', default='noLabel')
+create.add_argument('--force', help='force create the hotkey. Even if the type or label is not found')
+create.add_argument('-m','--mode', help=textwrap.dedent(possibleModes), default='std')
 
 #merge
 merge = subparsers.add_parser('merge', parents=[parentParser,fileUseParser], help='merges the current hotkey file with a given one')
@@ -133,8 +153,32 @@ def loadJsonFile():
 
 def createSubcommand():
     loadJsonFile()
-    print(f'{color.RED}create not implemented yet{color.END}')
-    print(f'{color.CYAN}hotKeys: {hotKeys}{color.END}')
+    global givenJsonFile
+    # create a label based on the name
+    label = args.label
+    newHotKey = {}
+    if args.type == 'sendInChat':
+        newHotKey = {'name':args.name, 'label':label,'type':args.type ,'content':args.content, 'mode':args.mode}
+    elif args.type == 'explorerShortcut':
+        newHotKey = {'name':args.name, 'label':label,'type':args.type ,'path':args.content}
+    elif args.type =='holdMouseButton' or args.type == 'autoClicker':
+        if args.content == 'left' or args.content == 'right':
+            newHotKey = {'name':args.name, 'label':label,'type':args.type ,'button':args.content}
+        else:
+            print(f'{color.RED}You specified {args.content} as content. You have to use "left" or "right" as content{color.END}')
+            sys.exit()
+    else:
+        newHotKey = {'name':args.name, 'label':label,'type':args.type ,'content':args.content}
+
+    hotKeys.append(newHotKey)
+    if args.verbosity >= 1:
+        print(f'{color.YELLOW}writing to file!{color.END}')
+    elif args.verbosity >= 2:
+        print(f'{color.YELLOW}new hotKeys content: {hotKeys}{color.END}')
+
+    with open(givenJsonFile, 'w') as jf:
+        json.dump(hotKeys, jf)
+
 
 def mergeSubcommand():
     print('merge not implemented yet')
@@ -221,3 +265,4 @@ if __name__ == '__main__':
 #------------------------------
 # bugs
 # "PROG create" doesnt show the usage
+#  the create feature doesnt create o label based on the name yet
