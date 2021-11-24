@@ -3,6 +3,7 @@ import argparse
 import pathlib
 import sys
 import textwrap
+import os.path
 
 class SmartFormatter(argparse.HelpFormatter):
 
@@ -23,17 +24,6 @@ class color:
     BOLD = '\033[1m'
     UNDERLINE = '\033[4m'
     END = '\033[0m'
- 
-    # def noColorMode():
-    #     global CYAN;        color.CYAN = ''
-    #     global DARKCYAN;    color.DARKCYAN = ''
-    #     global BLUE;        color.BLUE = ''
-    #     global GREEN;       color.GREEN = ''
-    #     global YELLOW;      color.YELLOW = ''
-    #     global RED;         color.RED = ''
-    #     global BOLD;        color.BOLD = ''
-    #     global UNDERLINE;   color.UNDERLINE = ''
-    #     global END;         color.END = ''
 
 
 hotKeys = [] # init array for the jsonfile
@@ -54,54 +44,97 @@ hotKeyContent = ''
 givenJsonFile = pathlib.PureWindowsPath('hotKeys.json')
 
 
-parser = argparse.ArgumentParser(prog='PROG',description='Not working yet',epilog='This is a epilog. TODO: Write that')
+parser = argparse.ArgumentParser(prog='PROG',description='I am to lazy to write the actual script. I am still writing the CLI *sight*',epilog='This is a epilog. TODO: Write that')
 #options that are always available
 parentParser = argparse.ArgumentParser('The Parrent parser', add_help=False)
-parentParser.add_argument('--file',type=pathlib.Path,default=givenJsonFile ,help='Not implemented yet')
-parentParser.add_argument('--no-color', help='Not implemented yet', default=True, action='store_false')
-parentParser.add_argument('--version', help='prints out the programs version number',action='version' ,version='%(prog)s 0.1')
-parentParser.add_argument('--json-no-exit', help='wont exit, if the JSON file is not loaded correctly. Sets "givenJsonFile" to "ERROR"', action='store_true')
-parentParser.add_argument('-v','--verbosity',help='increases the verbosity',action='count',default=0)
-parentParser.add_argument('-o','--output', help='creates the given file and dumps the updated input file in there')
+parentParser.add_argument('--no-color', help='stops the program from using ANSI color codes in the output', default=True, action='store_false')
+parentParser.add_argument('-V','--version', help='prints out the programs version number',action='version' ,version='0.1')
+parentParser.add_argument('-v','--verbosity',help='increases the verbosity. The current max level is 2. The default level is 0',action='count',default=0)
+
+fileUseParser = argparse.ArgumentParser('The parser for create, merge, fix and clean', add_help=False)
+fileUseParser.add_argument('-o','--output', help='creates the given file and dumps the updated input file in there')
+fileUseParser.add_argument('--json-no-exit', help='wont exit, if the JSON file is not loaded correctly. Sets "givenJsonFile" to "ERROR"', action='store_true')
+fileUseParser.add_argument('--file',type=pathlib.Path,default=givenJsonFile ,help='changes the used json file to a given one')
 
 subparsers = parser.add_subparsers(description='valid subcommands NOTE: only use one of these', dest='subCommand')
 subparsers.required = True
 
 #create
-create = subparsers.add_parser('create',parents=[parentParser],help='creates a Hotkey (Note: If you provide a label that already exists it will override that hotkey)',description='NOTE: add description',formatter_class=SmartFormatter)
+create = subparsers.add_parser('create',parents=[parentParser, fileUseParser],help='creates a Hotkey (Note: If you provide a label that already exists it will override that hotkey)',description='NOTE: add description',formatter_class=SmartFormatter)
 
 create.add_argument('name', help='use the name of a key. Use -l to list all possible keys')
 create.add_argument('type', help=textwrap.dedent(possibleHotkeys))
 create.add_argument('content', help='Not implemented yet')
 
 #merge
-merge = subparsers.add_parser('merge', parents=[parentParser], help='merges the current hotkey file with a given one')
+merge = subparsers.add_parser('merge', parents=[parentParser,fileUseParser], help='merges the current hotkey file with a given one')
 merge.add_argument('merge', type=pathlib.Path, help='Not implemented yet')
 forceKeepGroup = merge.add_mutually_exclusive_group()
 forceKeepGroup.add_argument('--force', default=False, action='store_true', help='overrites the old hotkey with the new one without asking (not implemented yet)')
 forceKeepGroup.add_argument('--keep', default=False, action='store_true', help='doesn´t overrite old hotkeys. Just adds the new ones (not implemented yet)')
 
 #fix
-fix = subparsers.add_parser('fix', help='COMING SOON',parents=[parentParser])
+fix = subparsers.add_parser('fix', help='COMING SOON',parents=[parentParser, fileUseParser])
 fix.add_argument('fix', help='Not implemented yet', action='store_true')
 fix.add_argument('--ignore-names', help='not implemented yet', action='store_true')
 
 #clean
-clean = subparsers.add_parser('clean', parents=[parentParser], help='cleans the given json file of unnessesary/garbage code (like e.g. a function with name "aq" or lable "420") (Not Implemented Yet!)')
+clean = subparsers.add_parser('clean', parents=[parentParser, fileUseParser], help='cleans the given json file of unnessesary/garbage code (like e.g. a function with name "aq" or lable "420") (Not Implemented Yet!)')
 clean.add_argument('clean', help='Not implemented yet', action='store_true')
 
 #list
-#ERROR: default=False nicht möglich
 hotKeyList = subparsers.add_parser('list', parents=[parentParser],help='lists all the possible keys')
-hotKeyList.add_argument('list', default=False, action='store_true')
+hotKeyList.add_argument('list', default=False, action='store_true', help='lists all the possible keys')
+
+demo = subparsers.add_parser('demo', help='creates a demo json file', parents=[parentParser])
+demo.add_argument('demo',default=False, action='store_true', help='creates a demo json file')
+demo.add_argument('--remove', default=False, action='store_true', help='removes the json file, if it already exsists')
 
 
+# print help when no args provided
+if len(sys.argv) < 2:  
+    parser.print_help()
+    sys.exit()
 
 args = parser.parse_args()
+#--------------Functions------------
+
+def loadJsonFile():
+    global givenJsonFile
+    global hotKeys
+
+    # create new file if file doesnt exsists
+    if os.path.isfile(givenJsonFile):
+        #file exsists
+        if args.verbosity >= 1:
+            # file exsists
+            print(f'{color.GREEN}The json file: "{givenJsonFile}" was found!{color.END}')
+    else:
+        # file does not exsist
+        if args.verbosity >= 1:
+            print(f'{color.RED}The json file: "{givenJsonFile}" was not found!{color.END}')
+            print(f'{color.YELLOW}Creating json File: {givenJsonFile}{color.END}')
+        f = open(givenJsonFile, 'w')
+        f.close()
+    
+
+    try:
+        with open(givenJsonFile) as jsonFile:
+            hotKeys = json.load(jsonFile)
+        jsonFile.close()
+        if args.verbosity >= 1:
+            print(f'{color.GREEN}finished loading json file!{color.END}')
+    except BaseException as err:
+        if args.json_no_exit == False:
+            print(f'\n{color.RED}The given jsonFile ({givenJsonFile}) was not loaded correctly. By default this program looks for "hotKeys.json" in the current directory. You can specify another with --file [FILENAME]\nERROR: {err}{color.END}\n')
+            sys.exit()
+        else:
+            givenJsonFile = "ERROR"
 
 def createSubcommand():
+    loadJsonFile()
     print(f'{color.RED}create not implemented yet{color.END}')
-    print(hotKeys)
+    print(f'{color.CYAN}hotKeys: {hotKeys}{color.END}')
 
 def mergeSubcommand():
     print('merge not implemented yet')
@@ -133,23 +166,14 @@ def main():
 
     global givenJsonFile    
 
-    if args.file != 'hotKeys.json':
-        givenJsonFile = args.file
-    global hotKeys
     try:
-        with open(givenJsonFile) as jsonFile:
-            hotKeys = json.load(jsonFile)
-        jsonFile.close()
-        if args.verbosity >= 1:
-            print(f'{color.GREEN}finished loading json file!{color.END}')
-    except BaseException as err:
-        if args.json_no_exit == False:
-            print(f'\n{color.RED}The given jsonFile ({givenJsonFile}) was not loaded correctly. By default this program looks for "hotKeys.json" in the current directory. You can specify another with --file [FILENAME]{color.END}')
-            sys.exit()
+        if args.file != 'hotKeys.json':
+            givenJsonFile = args.file
+    except:
+        pass
 
     if args.verbosity >= 2:
         print(f'{color.PURPLE}Args: {args}{color.END}')
-        print(f'{color.CYAN}Json file: {str(hotKeys)}{color.END}')
 
     if args.subCommand == 'create':
         createSubcommand()
@@ -184,7 +208,6 @@ if __name__ == '__main__':
     #no-color
     #quiet
     #verbosity
-    #aliases
     #ignore names: doesnt fix the name of the hotkey(e.g. if sb added a hotkey for key "q" but named it "minecraft" --> wont change name to "q")
     
 
@@ -193,3 +216,8 @@ if __name__ == '__main__':
 #print all msg with logging --> -v makes the log.info msg appear
 
 #check if merge file and given file are identical
+
+
+#------------------------------
+# bugs
+# "PROG create" doesnt show the usage
