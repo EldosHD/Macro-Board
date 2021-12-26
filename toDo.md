@@ -1,6 +1,7 @@
 # To Do
 
 ## For right now
+- add linux support
 
 - add support for custom functions
 - add updater cmdlet
